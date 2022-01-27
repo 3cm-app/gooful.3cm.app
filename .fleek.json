@@ -1,0 +1,14 @@
+{
+  "site": {
+    "id": "e96b62de-9fcd-4b55-9afd-2ebba139fad7",
+    "team": "ca07ecb8-9872-4fc0-a8aa-eb12068a20af",
+    "platform": "ipfs",
+    "source": "ipfs",
+    "name": "gooful-3cm-app"
+  },
+  "build": {
+    "baseDir": "",
+    "publicDir": "dist",
+    "rootDir": ""
+  }
+}
