@@ -3,6 +3,7 @@ import { EmptyState, Button } from 'construct-ui'
 import Search from '@/components/search.js'
 import { default as Result, ctrl as resultCtrl } from '@/components/result.js'
 import Toaster from '@/components/toaster.js'
+import GithubCorner from '@/components/github-corner.js'
 import ItemDialog from '@/components/item-dialog.js'
 
 const styles = {
@@ -29,6 +30,7 @@ export default function () {
       const el = window.document.querySelector('#item-dialog')
       return (
         <>
+          <GithubCorner></GithubCorner>
           <EmptyState style={styles.header}
             fill={false}
             icon={[

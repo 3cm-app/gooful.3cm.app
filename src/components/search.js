@@ -72,6 +72,9 @@ export function filter(row) {
     if (o.description.match(re)) {
       continue
     }
+    if (o.category.includes(searchKey)) {
+      continue
+    }
     for (const tag of o.tags) {
       if (tag.includes(searchKey)) {
         continue top

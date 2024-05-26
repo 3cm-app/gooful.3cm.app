@@ -1,4 +1,5 @@
 import 'construct-ui/lib/index.css'
+import './components/github-corner.css'
 import './components/item-dialog.css'
 import { ResponsiveManager } from 'construct-ui';
 import { Routes, DefaultRoute } from '@/routes.js'
