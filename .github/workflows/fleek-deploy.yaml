@@ -19,6 +19,21 @@ jobs:
         run: npm i
       - name: Build & deploy sites
         run: fleek sites deploy
+      - name: extract deployment id
+        id: extract_deployment_id
+        run: |
+          slug=$(jq -r .sites[0].slug fleek.config.json)
+          deployment_id=$(fleek sites deployments --slug $slug|grep RELEASE_COMPLETED|head -n 1| awk '{split($0,a," "); print a[1]}')
+          echo "deployment_id=$(echo ${deployment_id})" >> $GITHUB_OUTPUT
+      - uses: infraway/create-dns-record@v2.0
+        with:
+          type: "CNAME"
+          name: "gooful.3cm.app"
+          content: "${{ steps.extract_deployment_id.outputs.deployment_id }}.fleekcdn.xyz"
+          ttl: 1
+          proxied: false
+          token: ${{ secrets.CLOUDFLARE_TOKEN }}
+          zone: ${{ secrets.CLOUDFLARE_ZONE }}
       - uses: up9cloud/action-notify@master
         if: cancelled() == false
         env:
